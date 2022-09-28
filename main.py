@@ -2,7 +2,9 @@ import Peronnage as perso
 import Guerrier as guerre
 import Mage as magi
 import Joueur as lej
-
+import pickle
+import string
+import json
 
 p = perso.Personnage("Morgan",1)
 p1 = perso.Personnage("yop",1)
@@ -61,9 +63,19 @@ j.ajout(p)
 j.ajout(p3)
 j.ajout(m)
 j.ajout(g)
-print(lej.Joueur)
+
 #j.supr(p1)
 
 print([i.pseudo for i in j.get_perso()])
+print("\n")
+print("------------------------Json---------------")
+
+A = lej.Joueur()
+with open('mypicklefile','wb') as f1:
+    pickle.dump(A, f1)
+with open ('mypicklefile','rb') as f1:
+    B = pickle.load(f1)
+print(B)
+
 print("\n")
 

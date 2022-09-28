@@ -1,3 +1,5 @@
+import json
+
 class Personnage:
     def __init__(self,pseudo:str,lvl:int=1):
         self.__pseudo = pseudo
@@ -5,9 +7,8 @@ class Personnage:
         self.__pv = lvl
         self.__action = lvl
 
-
-
-
+    def __repr__(self):
+        return "{}, {}, {}, {}".format(self.__pseudo, self.__lvl, self.__pv,self.__action)
 
     def __str__(self):
         return f"{self.__pseudo} de niveau {self.__lvl}, avec {self.__pv} point de vie et {self.__action} point d'inisiative."
@@ -77,3 +78,6 @@ class Personnage:
     def lvl(self, lvl):
         if lvl > 0:
             self.__lvl = lvl
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
